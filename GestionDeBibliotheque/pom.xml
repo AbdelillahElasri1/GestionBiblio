@@ -3,4 +3,15 @@
   <groupId>org.abdelillahelasri</groupId>
   <artifactId>GestionDeBibliotheque</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version> <!-- Use the appropriate version for your MySQL server -->
+        </dependency>
+    </dependencies>
+    <properties>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+    </properties>
 </project>
