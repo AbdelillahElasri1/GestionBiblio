@@ -8,7 +8,7 @@ import java.sql.*;
 public class GestionDeBiblio {
 	static InputReader i = new InputReader(System.in);
 	static OutputWriter o = new OutputWriter(System.out);
-	public static final String Url = "com.mysql.cj.jdbc.Driver";
+	public static final String Url = "com.mysql.jdbc.Driver";
 	private static final String userName = "root";
 	private static final String password = "";
 
@@ -33,10 +33,10 @@ public class GestionDeBiblio {
 					ResultSet resultSet = statement.executeQuery("select * from user");
 					while (resultSet.next()){
 						String name = resultSet.getString("name");
-						String email = resultSet.getString("email");
+//						String email = resultSet.getString("email");
 						String status = resultSet.getString("status");
 						o.println(name);
-						o.println(email);
+//						o.println(email);
 						o.println(status);
 					}
 					break;
