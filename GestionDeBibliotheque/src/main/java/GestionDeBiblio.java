@@ -7,6 +7,7 @@ import utils.InputReader;
 import utils.OutputWriter;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestionDeBiblio {
@@ -28,9 +29,9 @@ public class GestionDeBiblio {
 			o.println("7- update member");
 			o.println("8- delete member");
 			o.println("9- getAllMembers");
-			o.println("6- search for book inside library");
-			o.println("7- take book from library");
-			o.println("8- return book to library");
+			o.println("10- search for book inside library");
+			o.println("11- take book from library");
+			o.println("12- return book to library");
 			o.println("0- exit");
 			o.print("enter your choice:  ");
 			int choice = i.readInt();
@@ -205,6 +206,49 @@ public class GestionDeBiblio {
 						}
 					}else {
 						o.println("no member in library");
+					}
+					break;
+				case 10:
+					o.println("search books by: ");
+					o.println("1- titre :");
+					o.println("2- author :");
+					o.println("choose search by title or author :");
+					int searchChoice = i.readInt();
+					switch (searchChoice){
+						case 1:
+							o.println("enter titre of the book : ");
+							String titreSearch = i.readLine();
+							BookDao bookDao5 = new BookDao();
+							List<Book> books1 = bookDao5.searchBookByTitre(titreSearch);
+							if (!books1.isEmpty()){
+								o.println("List of the book");
+								for (Book book1 : books1){
+									o.println("isbn of the book : " + book1.getIsbn());
+									o.println("titre book : " + book1.getTitre());
+									o.println("author of the book : " + book1.getAuthor());
+									o.println("status of the book : " + book1.getStatus());
+								}
+							}else {
+								o.println("no book with this title.");
+							}
+							break;
+						case 2:
+							o.println("enter author of the book : ");
+							String authorSearch = i.readLine();
+							BookDao bookDao6 = new BookDao();
+							List<Book> books3 = bookDao6.searchBookByAuthor(authorSearch);
+							if (!books3.isEmpty()){
+								o.println("List of the book : ");
+								for (Book book1 : books3) {
+									o.println("isbn of the book : " + book1.getIsbn());
+									o.println("titre book : " + book1.getTitre());
+									o.println("author of the book : " + book1.getAuthor());
+									o.println("status of the book : " + book1.getStatus());
+								}
+							}else {
+								o.println("no book with the author");
+							}
+							break;
 					}
 					break;
 				case 0:

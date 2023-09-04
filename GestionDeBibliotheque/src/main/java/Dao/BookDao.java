@@ -126,4 +126,46 @@ public class BookDao {
         }
         return books;
     }
+    public List<Book> searchBookByTitre(String titre){
+        connection = DB.getConnection();
+        List<Book> books = new ArrayList<>();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE titre LIKE ?");
+            preparedStatement.setString(1, "%" +titre+ "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int isbn = resultSet.getInt("isbn");
+                String titre1 = resultSet.getString("titre");
+                String author = resultSet.getString("author");
+                String status = resultSet.getString("status");
+                book = new Book(isbn,titre1,author,status);
+                books.add(book);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return books;
+    }
+    public List<Book> searchBookByAuthor(String author){
+        connection = DB.getConnection();
+        List<Book> books = new ArrayList<>();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book WHERE author LIKE ?");
+            preparedStatement.setString(1, "%" +author+ "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int isbn = resultSet.getInt("isbn");
+                String titre1 = resultSet.getString("titre");
+                String author1 = resultSet.getString("author");
+                String status = resultSet.getString("status");
+                book = new Book(isbn,titre1,author1,status);
+                books.add(book);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return books;
+    }
 }
