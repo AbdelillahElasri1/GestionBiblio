@@ -83,7 +83,7 @@ public class BookDao {
         }
         return book;
     }
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooksAvailable(){
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         try {
@@ -105,5 +105,25 @@ public class BookDao {
 
         return books;
 
+    }
+
+    public List<Book> getAllBooksBorrow(){
+        connection = DB.getConnection();
+        List<Book> books = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'borrow'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                int isbn = resultSet.getInt("isbn");
+                String titre = resultSet.getString("titre");
+                String author = resultSet.getString("author");
+                String status = resultSet.getString("status");
+                Book book = new Book(isbn,titre,author,status);
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
 }

@@ -1,21 +1,36 @@
 package models;
 
 public class Membre {
-    private Integer numberMember;
+    private Integer numMember;
     private String name;
+    private String cin;
 
-    public Membre(Integer numberMember, String name) {
-        this.numberMember = numberMember;
+
+    public Integer getNumMember() {
+        return numMember;
+    }
+
+    public void setNumMember(Integer numMember) {
+        this.numMember = numMember;
+    }
+
+    public Membre(Integer numMember, String name, String cin) {
+        this.numMember = numMember;
         this.name = name;
+        this.cin = cin;
     }
 
-    public Integer getNumberMember() {
-        return numberMember;
+    public String getCin() {
+        return cin;
     }
 
-    public void setNumberMember(Integer numberMember) {
-        this.numberMember = numberMember;
+    public void setCin(String cin) {
+        this.cin = cin;
     }
+
+
+
+
 
     public String getName() {
         return name;
@@ -28,7 +43,7 @@ public class Membre {
     @Override
     public String toString() {
         return "Membre{" +
-                "numberMember=" + numberMember +
+                "numMember=" + numMember +
                 ", name='" + name + '\'' +
                 '}';
     }

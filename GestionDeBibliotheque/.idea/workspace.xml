@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Membre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Database/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Database/DatabaseConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database/ConnectionDatabase.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Membre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Membre.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
