@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GestionDeBibliotheque.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Book.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Membre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Database/DatabaseConnectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Database/DatabaseConnectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DatabaseConnectionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database/ConnectionDatabase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Database/DatabaseConnectionManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GestionDeBiblio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/InputReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/OutputWriter.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,18 +36,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/elasri/Downloads/mysql-connector-j_8.1.0-1ubuntu23.04_all/data/usr/share/java/mysql-connector-java-8.1.0.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/elasri/Downloads/mysql-connector-j_8.1.0-1ubuntu23.04_all/data/usr/share/java/mysql-connector-java-8.1.0.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="GestionDeBiblio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GestionDeBiblio" />
+      <module name="GestionDeBibliotheque" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GestionDeBiblio" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
