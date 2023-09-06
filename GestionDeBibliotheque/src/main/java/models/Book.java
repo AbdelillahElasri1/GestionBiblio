@@ -3,22 +3,22 @@ public class Book {
     private Integer isbn;
     private String titre;
     private String author;
-    private String status;
+    private Status status;
 
 
 
-    public Book(Integer isbn, String titre, String author, String status) {
+    public Book(Integer isbn, String titre, String author, Status status) {
         this.isbn = isbn;
         this.titre = titre;
         this.author = author;
         this.status = status;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

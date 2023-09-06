@@ -3,6 +3,7 @@ import Dao.MembreDao;
 import Database.DatabaseConnectionManager;
 import models.Book;
 import models.Membre;
+import models.Status;
 import utils.InputReader;
 import utils.OutputWriter;
 
@@ -13,9 +14,8 @@ import java.util.List;
 public class GestionDeBiblio {
 	static InputReader i = new InputReader(System.in);
 	static OutputWriter o = new OutputWriter(System.out);
-//	public static final String Url = "com.mysql.jdbc.Driver";
-//	private static final String userName = "root";
-//	private static final String password = "";
+
+	Status status = null;
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		while (true) {
@@ -32,6 +32,7 @@ public class GestionDeBiblio {
 			o.println("10- search for book inside library");
 			o.println("11- take book from library");
 			o.println("12- return book to library");
+			o.println("13- Statistics of book");
 			o.println("0- exit");
 			o.print("enter your choice:  ");
 			int choice = i.readInt();
@@ -44,8 +45,9 @@ public class GestionDeBiblio {
 					String titre = i.readLine();
 					o.println("Enter author");
 					String author = i.readLine();
-					o.println("Enter status of book");
-					String status = i.readLine();
+					Status status = Status.AVAILABLE;
+//					o.println("Enter status of book");
+//					Status status = Status.valueOf(i.readLine());
 
 					Book book = new Book(isbn,titre,author,status);
 					BookDao bookDao = new BookDao();
@@ -74,17 +76,28 @@ public class GestionDeBiblio {
 						String newAuthor = i.readLine();
 
 						o.println("Enter new book status (or press Enter to keep existing) : ");
-						String newStatus = i.readLine();
-
+						o.println("1- Available.");
+						o.println("2- Borrowed.");
+						o.println("3- Lost.");
+						int newStatus = i.readInt();
+						switch (newStatus){
+							case 1:
+								existingBook.setStatus(Status.AVAILABLE);
+								break;
+							case 2:
+								existingBook.setStatus(Status.BORROWED);
+								break;
+							case 3:
+								existingBook.setStatus(Status.LOST);
+						}
 						if (!newTitre.isEmpty()){
 							existingBook.setTitre(newTitre);
 						}
 						if (!newAuthor.isEmpty()){
 							existingBook.setAuthor(newAuthor);
 						}
-						if (!newStatus.isEmpty()){
-							existingBook.setStatus(newStatus);
-						}
+
+
 						bookDao1.updateBook(existingBook);
 						o.println("book updated successfully");
 					} else {
@@ -249,6 +262,23 @@ public class GestionDeBiblio {
 							}
 							break;
 					}
+					break;
+				case 11:
+					o.println("take book from ibrary");
+					break;
+				case 12:
+					break;
+				case 13:
+					o.println("=>Statistics of book in library : ");
+					BookDao bookDao5 = new BookDao();
+					o.print("--------------------------All books      : ");
+					bookDao5.allBooksInLibrary();
+					o.print("--------------------------book available : ");
+					bookDao5.bookAvailable();
+					o.print("--------------------------book borrowed  : ");
+					bookDao5.bookBorrowed();
+					o.print("--------------------------book Lost      : ");
+					bookDao5.bookLost();
 					break;
 				case 0:
 					o.println("exit");

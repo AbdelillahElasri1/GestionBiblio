@@ -2,6 +2,7 @@ package Dao;
 
 import Database.DatabaseConnectionManager;
 import models.Book;
+import models.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 public class BookDao {
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
     Connection connection = null;
+    Status status = Status.AVAILABLE;
     public void saveBook(Book book){
 
 
@@ -19,7 +21,8 @@ public class BookDao {
                 preparedStatement.setInt(1,book.getIsbn());
                 preparedStatement.setString(2,book.getTitre());
                 preparedStatement.setString(3,book.getAuthor());
-                preparedStatement.setString(4,book.getStatus());
+                preparedStatement.setString(4,status.name());
+
                 preparedStatement.executeUpdate();
 
 
@@ -45,7 +48,7 @@ public class BookDao {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET titre = ?, author = ?, status = ? WHERE isbn = ?");
             preparedStatement.setString(1,book.getTitre());
             preparedStatement.setString(2,book.getAuthor());
-            preparedStatement.setString(3,book.getStatus());
+            preparedStatement.setString(3, String.valueOf(book.getStatus()));
             preparedStatement.setInt(4,book.getIsbn());
             preparedStatement.executeUpdate();
         } catch (SQLException e){
@@ -74,7 +77,7 @@ public class BookDao {
                     int isbn = resultSet.getInt("isbn");
                     String titre = resultSet.getString("titre");
                     String author = resultSet.getString("author");
-                    String status = resultSet.getString("status");
+                    Status status = Status.valueOf(resultSet.getString("status"));
                      book = new Book(isbn,titre,author,status);
                 }
             }
@@ -87,13 +90,13 @@ public class BookDao {
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'disponible'");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'AVAILABLE'");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 int id = resultSet.getInt("isbn");
                 String titre = resultSet.getString("titre");
                 String author = resultSet.getString("author");
-                String status = resultSet.getString("status");
+                Status status = Status.valueOf(resultSet.getString("status"));
 
                 Book book = new Book(id,titre,author,status);
                 books.add(book);
@@ -111,13 +114,13 @@ public class BookDao {
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'borrow'");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'BORROWED'");
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 int isbn = resultSet.getInt("isbn");
                 String titre = resultSet.getString("titre");
                 String author = resultSet.getString("author");
-                String status = resultSet.getString("status");
+                Status status = Status.valueOf(resultSet.getString("status"));
                 Book book = new Book(isbn,titre,author,status);
                 books.add(book);
             }
@@ -138,7 +141,7 @@ public class BookDao {
                 int isbn = resultSet.getInt("isbn");
                 String titre1 = resultSet.getString("titre");
                 String author = resultSet.getString("author");
-                String status = resultSet.getString("status");
+                Status status = Status.valueOf(resultSet.getString("status"));
                 book = new Book(isbn,titre1,author,status);
                 books.add(book);
             }
@@ -159,7 +162,7 @@ public class BookDao {
                 int isbn = resultSet.getInt("isbn");
                 String titre1 = resultSet.getString("titre");
                 String author1 = resultSet.getString("author");
-                String status = resultSet.getString("status");
+                Status status = Status.valueOf(resultSet.getString("status"));
                 book = new Book(isbn,titre1,author1,status);
                 books.add(book);
             }
@@ -167,5 +170,73 @@ public class BookDao {
             e.printStackTrace();
         }
         return books;
+    }
+    public void bookAvailable() {
+        connection = DB.getConnection();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'AVAILABLE'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                int countBookAvailable = resultSet.getInt(1);
+                System.out.println(countBookAvailable);
+            }else {
+                System.out.println("no available book");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void bookBorrowed(){
+        connection = DB.getConnection();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'BORROWED'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                int countBookBorrowed = resultSet.getInt(1);
+                System.out.println(countBookBorrowed);
+            }else {
+                System.out.println("no Borrowed book");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void bookLost(){
+        connection = DB.getConnection();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'Lost'");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                int countBookLost = resultSet.getInt(1);
+                System.out.println(countBookLost);
+            }else {
+                System.out.println("no Lost book");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void allBooksInLibrary(){
+        connection = DB.getConnection();
+        Book book = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                int allBook = resultSet.getInt(1);
+                System.out.println(allBook);
+            }else {
+                System.out.println("no book in library");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
