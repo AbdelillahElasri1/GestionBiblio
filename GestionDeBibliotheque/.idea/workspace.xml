@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="" />
+    <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/BookBorrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/models/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/MembreDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>

@@ -22,8 +22,9 @@ public class MembreDao {
             preparedStatement.setString(2,membre.getName());
             preparedStatement.setString(3,membre.getCin());
             preparedStatement.executeUpdate();
+
         } catch (SQLException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             // Close the connection in a finally block to ensure it's always closed
             if (connection != null) {

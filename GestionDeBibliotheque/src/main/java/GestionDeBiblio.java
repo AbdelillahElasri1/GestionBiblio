@@ -147,7 +147,6 @@ public class GestionDeBiblio {
 					Membre membre = new Membre(numMember,name,cin);
 					MembreDao membreDao = new MembreDao();
 					membreDao.saveMember(membre);
-
 					o.println("Member added");
 						break;
 				case 7:
