@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Dao/BookBorrowDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/BookBorrow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/BookBorrow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/utils/InputReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/utils/InputReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GestionDeBiblio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/BookBorrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/BookBorrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/InputReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/InputReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>

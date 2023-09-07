@@ -1,15 +1,21 @@
+import Dao.BookBorrowDao;
 import Dao.BookDao;
 import Dao.MembreDao;
 import Database.DatabaseConnectionManager;
 import models.Book;
+import models.BookBorrow;
 import models.Membre;
 import models.Status;
 import utils.InputReader;
 import utils.OutputWriter;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class GestionDeBiblio {
 	static InputReader i = new InputReader(System.in);
@@ -17,7 +23,7 @@ public class GestionDeBiblio {
 
 	Status status = null;
 
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException {
 		while (true) {
 			o.println("Welcome to library system management");
 			o.println("1- add books to library");
@@ -264,9 +270,31 @@ public class GestionDeBiblio {
 					}
 					break;
 				case 11:
-					o.println("take book from ibrary");
+					o.println("take book from Library");
+					o.println("enter the isbn of book :");
+					int isbnOfBook = i.readInt();
+					o.println("enter the number of member :");
+					int numOfMember = i.readInt();
+					o.println("enter date of return book (YYYY-MM-DD) : ");
+
+					Scanner scanner = new Scanner(System.in);
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = dateFormat.parse(scanner.next());
+
+					BookBorrow bookBorrow = new BookBorrow(date);
+					BookBorrowDao bookBorrowDao = new BookBorrowDao();
+					bookBorrowDao.takeBookFromLibrary(isbnOfBook,numOfMember,bookBorrow);
+					o.println("book is borrowed successfully");
 					break;
 				case 12:
+					o.println("return book to Library");
+					o.println("enter isbn of the book borrowed: ");
+					int isbnBook = i.readInt();
+					o.println("enter number of member : ");
+					int numberOMember = i.readInt();
+					BookBorrowDao bookBorrowDao1 = new BookBorrowDao();
+					bookBorrowDao1.returnBookToLibrary(isbnBook,numberOMember);
+
 					break;
 				case 13:
 					o.println("=>Statistics of book in library : ");

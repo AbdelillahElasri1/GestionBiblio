@@ -1,9 +1,11 @@
 package utils;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class InputReader {
 	private final Scanner scanner;
+
 	
 	public InputReader(java.io.InputStream inputStream) {
 		this.scanner = new Scanner(inputStream);
@@ -11,6 +13,10 @@ public class InputReader {
 	public String readLine() {
 		return scanner.nextLine();
 	}
+
+
+
+
 	public int readInt(){
 		int value = -1;
 		while (true){
