@@ -11,9 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MembreDao {
+public class MembreDao implements MembreDaoInterface{
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
     Connection connection = null;
+    @Override
     public void saveMember(Membre membre){
         connection = DB.getConnection();
         try {
@@ -37,6 +38,7 @@ public class MembreDao {
             }
         }
     }
+    @Override
     public void updateMember(Membre membre){
         connection = DB.getConnection();
         try {
@@ -50,6 +52,7 @@ public class MembreDao {
         }
 
     }
+    @Override
     public void deleteMember(int numberMember){
         connection = DB.getConnection();
         try {
@@ -60,6 +63,7 @@ public class MembreDao {
             e.printStackTrace();
         }
     }
+    @Override
     public Membre getMemberByNumMember(int memberId){
         Membre membre = null;
         connection = DB.getConnection();
@@ -79,6 +83,7 @@ public class MembreDao {
         }
         return membre;
     }
+    @Override
     public List<Membre> getAllMembers(){
         connection = DB.getConnection();
         List<Membre> membres = new ArrayList<>();

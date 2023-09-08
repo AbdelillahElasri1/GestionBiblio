@@ -8,10 +8,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDao {
+public class BookDao implements BookDaoInterface {
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
     Connection connection = null;
     Status status = Status.AVAILABLE;
+    @Override
     public void saveBook(Book book){
 
 
@@ -41,6 +42,7 @@ public class BookDao {
             }
         }
     }
+    @Override
     public void updateBook(Book book){
 
         try {
@@ -56,6 +58,7 @@ public class BookDao {
         }
 
     }
+    @Override
     public void deleteBook(int bookId){
         try {
             connection = DB.getConnection();
@@ -66,6 +69,7 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    @Override
     public Book getBookByIsbn(int bookId){
         Book book = null;
         connection = DB.getConnection();
@@ -86,6 +90,7 @@ public class BookDao {
         }
         return book;
     }
+    @Override
     public List<Book> getAllBooksAvailable(){
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
@@ -109,7 +114,7 @@ public class BookDao {
         return books;
 
     }
-
+    @Override
     public List<Book> getAllBooksBorrow(){
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
@@ -129,6 +134,7 @@ public class BookDao {
         }
         return books;
     }
+    @Override
     public List<Book> searchBookByTitre(String titre){
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
@@ -150,6 +156,7 @@ public class BookDao {
         }
         return books;
     }
+    @Override
     public List<Book> searchBookByAuthor(String author){
         connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
@@ -171,6 +178,7 @@ public class BookDao {
         }
         return books;
     }
+    @Override
     public void bookAvailable() {
         connection = DB.getConnection();
         Book book = null;
@@ -188,6 +196,7 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    @Override
     public void bookBorrowed(){
         connection = DB.getConnection();
         Book book = null;
@@ -205,6 +214,7 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    @Override
     public void bookLost(){
         connection = DB.getConnection();
         Book book = null;
@@ -222,6 +232,7 @@ public class BookDao {
             e.printStackTrace();
         }
     }
+    @Override
     public void allBooksInLibrary(){
         connection = DB.getConnection();
         Book book = null;
