@@ -4,6 +4,7 @@ public class Membre {
     private Integer numMember;
     private String name;
     private String cin;
+    private BookBorrow bookBorrow;
 
 
     public Integer getNumMember() {
@@ -18,6 +19,15 @@ public class Membre {
         this.numMember = numMember;
         this.name = name;
         this.cin = cin;
+
+    }
+
+    public BookBorrow getBookBorrow() {
+        return bookBorrow;
+    }
+
+    public void setBookBorrow(BookBorrow bookBorrow) {
+        this.bookBorrow = bookBorrow;
     }
 
     public String getCin() {

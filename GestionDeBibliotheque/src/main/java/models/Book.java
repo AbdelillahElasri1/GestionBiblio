@@ -1,9 +1,13 @@
 package models;
+
+import java.util.List;
+
 public class Book {
     private Integer isbn;
     private String titre;
     private String author;
     private Status status;
+    private BookBorrow bookBorrow;
 
 
 
@@ -12,6 +16,14 @@ public class Book {
         this.titre = titre;
         this.author = author;
         this.status = status;
+    }
+
+    public BookBorrow getBookBorrow() {
+        return bookBorrow;
+    }
+
+    public void setBookBorrow(BookBorrow bookBorrow) {
+        this.bookBorrow = bookBorrow;
     }
 
     public Status getStatus() {

@@ -34,30 +34,26 @@ public class BookBorrowDao {
     public void returnBookToLibrary(int bookIsbn, int memberNumber){
         connection = DB.getConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT dateOfBorrow,dateOfReturn,bookId, memberId FROM bookBorrow WHERE bookId = ? AND memberId = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT dateOfReturn,bookId, memberId FROM bookBorrow WHERE bookId = ? AND memberId = ?");
             preparedStatement.setInt(1,bookIsbn);
             preparedStatement.setInt(2,memberNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                Timestamp dateBorrow = resultSet.getTimestamp("dateOfBorrow");
+                Timestamp dateNow = new Timestamp(System.currentTimeMillis());
+                System.out.println(dateNow);
                 Date dateReturn = resultSet.getDate("dateOfReturn");
-//                int bookIsbn1 = resultSet.getInt("bookId");
-//                int memberNumber1 = resultSet.getInt("memberId");
-                int comparisonResult = dateBorrow.compareTo(dateReturn);
+                int comparisonResult = dateNow.compareTo(dateReturn);
                 if (comparisonResult     < 0) {
-//                    System.out.println("dateBorrow is earlier than dateReturn");
-//                    PreparedStatement preparedStatement1 = connection.prepareStatement("UPDATE book SET status='BORROWED' WHERE isbn = ?");
-//                    preparedStatement1.setInt(1,bookIsbn);
-//                     preparedStatement1.executeUpdate();
-                    System.out.println("book already Borrowed");
+                    PreparedStatement preparedStatement1 = connection.prepareStatement("UPDATE book SET status = 'AVAILABLE' WHERE isbn = ?");
+                    preparedStatement1.setInt(1,bookIsbn);
+                    preparedStatement1.executeUpdate();
+                    System.out.println("book is Available Now");
                 } else if (comparisonResult > 0) {
-//                    System.out.println("dateBorrow is later than dateReturn");
                     PreparedStatement preparedStatement1 = connection.prepareStatement("UPDATE book SET status='LOST' WHERE isbn = ?");
                     preparedStatement1.setInt(1,bookIsbn);
                     preparedStatement1.executeUpdate();
                     System.out.println("book is Lost");
                 } else {
-//                    System.out.println("dateBorrow is equal to dateReturn");
                     PreparedStatement preparedStatement1 = connection.prepareStatement("UPDATE book SET status='AVAILABLE' WHERE isbn = ?");
                     preparedStatement1.setInt(1,bookIsbn);
                     preparedStatement1.executeUpdate();
