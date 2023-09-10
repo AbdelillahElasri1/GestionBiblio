@@ -13,10 +13,9 @@ import java.util.List;
 
 public class MembreDao implements MembreDaoInterface{
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
-    Connection connection = null;
+    Connection connection = DB.getConnection();
     @Override
     public void saveMember(Membre membre){
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO member (numMember, name, cin) VALUES(?,?,?)");
             preparedStatement.setInt(1,membre.getNumMember());
@@ -40,7 +39,6 @@ public class MembreDao implements MembreDaoInterface{
     }
     @Override
     public void updateMember(Membre membre){
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET name = ?, cin = ? WHERE numMember = ?");
             preparedStatement.setString(1,membre.getName());
@@ -54,7 +52,6 @@ public class MembreDao implements MembreDaoInterface{
     }
     @Override
     public void deleteMember(int numberMember){
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE numMember = ?");
             preparedStatement.setInt(1,numberMember);
@@ -66,7 +63,6 @@ public class MembreDao implements MembreDaoInterface{
     @Override
     public Membre getMemberByNumMember(int memberId){
         Membre membre = null;
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT numMember, name, cin FROM member WHERE numMember = ?");
             preparedStatement.setInt(1, memberId);
@@ -85,7 +81,6 @@ public class MembreDao implements MembreDaoInterface{
     }
     @Override
     public List<Membre> getAllMembers(){
-        connection = DB.getConnection();
         List<Membre> membres = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT numMember,name,cin FROM member");

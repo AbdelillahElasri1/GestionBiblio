@@ -10,14 +10,14 @@ import java.util.List;
 
 public class BookDao implements BookDaoInterface {
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
-    Connection connection = null;
+    Connection connection = DB.getConnection();
+
     Status status = Status.AVAILABLE;
     @Override
     public void saveBook(Book book){
 
 
         try {
-                connection = DB.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO book(isbn,titre,author,status) VALUES (?,?,?,?)");
                 preparedStatement.setInt(1,book.getIsbn());
                 preparedStatement.setString(2,book.getTitre());
@@ -46,7 +46,6 @@ public class BookDao implements BookDaoInterface {
     public void updateBook(Book book){
 
         try {
-            connection = DB.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET titre = ?, author = ?, status = ? WHERE isbn = ?");
             preparedStatement.setString(1,book.getTitre());
             preparedStatement.setString(2,book.getAuthor());
@@ -61,7 +60,6 @@ public class BookDao implements BookDaoInterface {
     @Override
     public void deleteBook(int bookId){
         try {
-            connection = DB.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
             preparedStatement.setInt(1,bookId);
             preparedStatement.executeUpdate();
@@ -72,7 +70,6 @@ public class BookDao implements BookDaoInterface {
     @Override
     public Book getBookByIsbn(int bookId){
         Book book = null;
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn, titre, author, status FROM book WHERE isbn = ?");
             preparedStatement.setInt(1, bookId);
@@ -92,7 +89,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public List<Book> getAllBooksAvailable(){
-        connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'AVAILABLE'");
@@ -116,7 +112,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public List<Book> getAllBooksBorrow(){
-        connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT isbn,titre,author,status FROM book WHERE status = 'BORROWED'");
@@ -136,7 +131,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public List<Book> searchBookByTitre(String titre){
-        connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         Book book = null;
         try {
@@ -158,7 +152,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public List<Book> searchBookByAuthor(String author){
-        connection = DB.getConnection();
         List<Book> books = new ArrayList<>();
         Book book = null;
         try {
@@ -180,7 +173,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public void bookAvailable() {
-        connection = DB.getConnection();
         Book book = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'AVAILABLE'");
@@ -198,7 +190,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public void bookBorrowed(){
-        connection = DB.getConnection();
         Book book = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'BORROWED'");
@@ -216,7 +207,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public void bookLost(){
-        connection = DB.getConnection();
         Book book = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book WHERE status = 'Lost'");
@@ -234,7 +224,6 @@ public class BookDao implements BookDaoInterface {
     }
     @Override
     public void allBooksInLibrary(){
-        connection = DB.getConnection();
         Book book = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM book");

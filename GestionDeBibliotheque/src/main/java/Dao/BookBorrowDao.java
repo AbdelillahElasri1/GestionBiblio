@@ -9,13 +9,12 @@ import java.sql.*;
 
 public class BookBorrowDao implements BookBorrowDaoInterface{
     DatabaseConnectionManager DB = new DatabaseConnectionManager();
-    Connection connection = null;
+    Connection connection = DB.getConnection();
     Status status = null;
     String available = String.valueOf(Status.AVAILABLE);
     String borrow = String.valueOf(Status.BORROWED);
     @Override
     public void takeBookFromLibrary(int bookId, int memberId, BookBorrow bookBorrow){
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                             "INSERT INTO bookBorrow (dateOfBorrow,dateOfReturn,bookId, memberId) VALUES (?,?,?,?)"
@@ -34,7 +33,6 @@ public class BookBorrowDao implements BookBorrowDaoInterface{
     }
     @Override
     public void returnBookToLibrary(int bookIsbn, int memberNumber){
-        connection = DB.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT dateOfReturn,bookId, memberId FROM bookBorrow WHERE bookId = ? AND memberId = ?");
             preparedStatement.setInt(1,bookIsbn);

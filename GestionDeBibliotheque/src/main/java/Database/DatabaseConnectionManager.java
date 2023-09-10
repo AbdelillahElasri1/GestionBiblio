@@ -20,8 +20,6 @@ public class DatabaseConnectionManager {
 
 
     public Connection getConnection(){
-        System.out.println("db connected");
-
         if (connection == null){
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");

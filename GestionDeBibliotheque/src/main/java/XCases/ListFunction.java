@@ -24,11 +24,14 @@ public class ListFunction {
         o.println("                                                      ****************************");
         o.println("                                                      * Welcome to form add book *");
         o.println("                                                      ****************************");
-        o.print("                                                        Enter Isbn : ");
+        o.println("                                                      Enter Isbn : ");
+        o.print("                                                        -> ");
         int isbn = i.readInt();
-        o.print("                                                        Enter titre : ");
+        o.println("                                                      Enter titre : ");
+        o.print("                                                       -> ");
         String titre = i.readLine();
-        o.print("                                                        Enter author : ");
+        o.println("                                                      Enter author : ");
+        o.print("                                                       -> ");
         String author = i.readLine();
         Status status = Status.AVAILABLE;
 
@@ -42,7 +45,8 @@ public class ListFunction {
         o.println("                                                     *******************************");
         o.println("                                                     * Welcome to form update book *");
         o.println("                                                     *******************************");
-        o.print("                                                       Enter the isbn of book : ");
+        o.println("                                                     Enter the isbn of book : ");
+        o.print("                                                       -> ");
         int bookId = i.readInt();
         BookDao bookDao1 = new BookDao();
         Book existingBook =  bookDao1.getBookByIsbn(bookId);
@@ -62,15 +66,18 @@ public class ListFunction {
 
 
             o.println("                                                  Enter new book titre (or press Enter to keep existing) : ");
+            o.print("                                                       -> ");
             String newTitre = i.readLine();
 
             o.println("                                                  Enter new book author (or press Enter to keep existing) : ");
+            o.print("                                                       -> ");
             String newAuthor = i.readLine();
 
             o.println("                                                  Enter new book status (or press Enter to keep existing) : ");
             o.println("                                                        1- Available.");
             o.println("                                                        2- Borrowed.");
             o.println("                                                        3- Lost.");
+            o.print("                                                       -> ");
             int newStatus = i.readInt();
             switch (newStatus){
                 case 1:
@@ -98,13 +105,16 @@ public class ListFunction {
 
     }
     public void dropBook(){
-        o.println("                                                       Delete book from database");
+        o.println("                                                     *******************************");
+        o.println("                                                     *  Delete book from database  *");
+        o.println("                                                     *******************************");
         o.println("");
         o.println("                                                       Enter the isbn of the book you want to delete: ");
+        o.print("                                                       -> ");
         int bookIsbn = i.readInt();
         BookDao bookDao2 = new BookDao();
         bookDao2.deleteBook(bookIsbn);
-        o.println("                                                       The book is deleted successfully");
+        o.println("                                                       The book is deleted successfully :)");
     }
     public void allBooksAvailable(){
         o.println("                                                       All books available in library :");
@@ -112,29 +122,44 @@ public class ListFunction {
 
         List<Book> books = bookDao3.getAllBooksAvailable();
         if (!books.isEmpty()){
-            o.println("                                                   List of books available");
+            o.println("                                                     *******************************");
+            o.println("                                                     *   List of book available    *");
+            o.println("                                                     *******************************");
             for (Book book1 : books) {
-                o.println("                                               Book isbn : " + book1.getIsbn());
-                o.println("                                               Titre : " + book1.getTitre());
-                o.println("                                               Author : " + book1.getAuthor());
-                o.println("                                               status : " + book1.getStatus());
+                o.println("                                              -----------------------------------");
+                o.println("                                              |Book isbn : " + book1.getIsbn()+"|");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Titre : " + book1.getTitre()+"   |");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Author : " + book1.getAuthor()+" |");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Status : " + book1.getStatus()+" |");
+                o.println("                                              |---------------------------------|");
             }
+
         }else {
             o.println("                                                   No books available inside library :(");
         }
     }
     public void allBooksBorrowed(){
-        o.println("                                                       All books borrowed by members :");
+        o.println("                                                     *******************************");
+        o.println("                                                     * List book borrowed by member*");
+        o.println("                                                     *******************************");
         BookDao bookDao4 = new BookDao();
 
         List<Book> books2 = bookDao4.getAllBooksBorrow();
         if (!books2.isEmpty()){
             o.println("                                                   List of books borrowed :");
             for (Book book2 : books2){
-                o.println("                                               Book isbn : " + book2.getIsbn());
-                o.println("                                               Titre : " + book2.getTitre());
-                o.println("                                               Author : " + book2.getAuthor());
-                o.println("                                               Status : " + book2.getStatus());
+                o.println("                                              -----------------------------------");
+                o.println("                                              |Book isbn : " + book2.getIsbn()+"|");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Titre : " + book2.getTitre()   +"|");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Author : " + book2.getAuthor() +"|");
+                o.println("                                              |---------------------------------|");
+                o.println("                                              |Status : " + book2.getStatus() +"|");
+                o.println("                                              -----------------------------------");
             }
         }else {
             o.println("                                                   No books borrowed by members :(");
@@ -146,9 +171,11 @@ public class ListFunction {
         o.println("                                                     *******************************");
         o.print("                                                       Enter number of member : ");
         int numMember = i.readInt();
-        o.print("                                                       Enter name : ");
+        o.println("                                                     Enter name : ");
+        o.print("                                                       -> ");
         String name = i.readLine();
-        o.print("                                                       Enter cin : ");
+        o.println("                                                     Enter cin : ");
+        o.print("                                                       -> ");
         String cin = i.readLine();
 
         Membre membre = new Membre(numMember,name,cin);
@@ -173,11 +200,11 @@ public class ListFunction {
 
 
             o.println("                                                 Enter new member name (or press Enter to keep existing) : ");
-            o.print("-> ");
+            o.print("                                                       -> ");
             String newName = i.readLine();
 
             o.println("                                                 Enter new member cin (or press Enter to keep existing) : ");
-            o.print("-> ");
+            o.print("                                                       -> ");
             String newCin = i.readLine();
 
 
@@ -198,7 +225,7 @@ public class ListFunction {
         o.println("                                                     * Delete member from database *");
         o.println("                                                     *******************************");
         o.println("                                                     Enter the number of member you want to delete: ");
-        o.print("-> ");
+        o.print("                                                       -> ");
         int numberOfMember = i.readInt();
         MembreDao membreDao2 = new MembreDao();
         membreDao2.deleteMember(numberOfMember);
@@ -214,9 +241,13 @@ public class ListFunction {
         if (!membres.isEmpty()){
             o.println("                                                 List of Member : ");
             for (Membre membre1 : membres) {
-                o.println("                                             Number of member : " + membre1.getNumMember());
-                o.println("                                             Name : " + membre1.getName());
-                o.println("                                             Cin : " + membre1.getCin());
+                o.println("                                            -------------------------------------------------");
+                o.println("                                            |Number of member : " + membre1.getNumMember()+"|");
+                o.println("                                            |-----------------------------------------------|");
+                o.println("                                            |Name : " + membre1.getName()                 +"|");
+                o.println("                                            |-----------------------------------------------|");
+                o.println("                                            |Cin : " + membre1.getCin()                   +"|");
+                o.println("                                            -------------------------------------------------");
             }
         }else {
             o.println("                                                 No member in library");
@@ -230,23 +261,29 @@ public class ListFunction {
         o.println("                                                       1- titre :");
         o.println("                                                       2- author :");
         o.println("                                                     choose search by title or author :");
-        o.print("-> ");
+        o.print("                                                       -> ");
         int searchChoice = i.readInt();
         switch (searchChoice){
             case 1:
                 o.println("                                             Enter titre of the book : ");
-                o.print("-> ");
+                o.print("                                               -> ");
                 String titreSearch = i.readLine();
                 BookDao bookDao5 = new BookDao();
                 List<Book> books1 = bookDao5.searchBookByTitre(titreSearch);
                 if (!books1.isEmpty()){
                     o.println("                                         List of the book :");
                     for (Book book1 : books1){
-                        o.println("                                     Isbn of the book : " + book1.getIsbn());
-                        o.println("                                     Titre book : " + book1.getTitre());
-                        o.println("                                     Author of the book : " + book1.getAuthor());
-                        o.println("                                     Status of the book : " + book1.getStatus());
+                        o.println("                                    ----------------------------------------------");
+                        o.println("                                    |Isbn of the book : " + book1.getIsbn()+"    |");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Titre book : " + book1.getTitre()+"         |");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Author of the book : " + book1.getAuthor()+"|");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Status of the book : " + book1.getStatus()+"|");
+                        o.println("                                    ---------------------------------------------|");
                     }
+
                 }else {
                     o.println("                                         no book with this title.");
                 }
@@ -259,24 +296,32 @@ public class ListFunction {
                 if (!books3.isEmpty()){
                     o.println("                                         List of the book : ");
                     for (Book book1 : books3) {
-                        o.println("                                     isbn of the book : " + book1.getIsbn());
-                        o.println("                                     titre book : " + book1.getTitre());
-                        o.println("                                     author of the book : " + book1.getAuthor());
-                        o.println("                                     status of the book : " + book1.getStatus());
+                        o.println("                                    ----------------------------------------------");
+                        o.println("                                    |Isbn of the book : " + book1.getIsbn()    +"|");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Titre book : " + book1.getTitre()         +"|");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Author of the book : " + book1.getAuthor()+"|");
+                        o.println("                                    |--------------------------------------------|");
+                        o.println("                                    |Status of the book : " + book1.getStatus()+"|");
+                        o.println("                                    ----------------------------------------------");
                     }
                 }else {
-                    o.println("                                       no book with the author");
+                    o.println("                                         no book with the author");
                 }
                 break;
         }
     }
     public void takeBook() throws ParseException {
-        o.println("take book from Library");
-        o.println("enter the isbn of book :");
+        o.println("                                                     Take book from Library");
+        o.println("                                                     Enter the isbn of book :");
+        o.print("                                                       -> ");
         int isbnOfBook = i.readInt();
-        o.println("enter the number of member :");
+        o.println("                                                     Enter the number of member :");
+        o.print("                                                       -> ");
         int numOfMember = i.readInt();
-        o.println("enter date of return book (YYYY-MM-DD) : ");
+        o.println("                                                     Enter date of return book (YYYY-MM-DD) : ");
+        o.print("                                                       -> ");
 
         Scanner scanner = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -285,28 +330,30 @@ public class ListFunction {
         BookBorrow bookBorrow = new BookBorrow(date);
         BookBorrowDao bookBorrowDao = new BookBorrowDao();
         bookBorrowDao.takeBookFromLibrary(isbnOfBook,numOfMember,bookBorrow);
-        o.println("book is borrowed successfully");
+        o.println("                                                     Book is borrowed successfully :)");
     }
     public void returnBooks(){
-        o.println("return book to Library");
-        o.println("enter isbn of the book borrowed: ");
+        o.println("                                                     Return book to Library");
+        o.println("                                                     Enter isbn of the book borrowed: ");
+        o.print("                                                       -> ");
         int isbnBook = i.readInt();
-        o.println("enter number of member : ");
+        o.println("                                                     Enter number of member : ");
+        o.print("                                                       -> ");
         int numberOMember = i.readInt();
         BookBorrowDao bookBorrowDao1 = new BookBorrowDao();
         bookBorrowDao1.returnBookToLibrary(isbnBook,numberOMember);
 
     }
     public void bookStatistics(){
-        o.println("=>Statistics of book in library : ");
+        o.println("                                                    =>Statistics of book in library : ");
         BookDao bookDao5 = new BookDao();
-        o.print("--------------------------All books      : ");
+        o.print("                                                      --------------------------All books      : ");
         bookDao5.allBooksInLibrary();
-        o.print("--------------------------book available : ");
+        o.print("                                                      --------------------------book available : ");
         bookDao5.bookAvailable();
-        o.print("--------------------------book borrowed  : ");
+        o.print("                                                      --------------------------book borrowed  : ");
         bookDao5.bookBorrowed();
-        o.print("--------------------------book Lost      : ");
+        o.print("                                                      --------------------------book Lost      : ");
         bookDao5.bookLost();
     }
 }
