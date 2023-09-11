@@ -40,7 +40,7 @@ public class ListFunction {
 
         Book book = new Book(isbn,titre,author,status);
         bookDao.saveBook(book);
-        o.println("                                                      book added successfully :)");
+        o.println("                                                      book "+ book.getTitre() +" added successfully :)");
         o.println("");
     }
     public void editBook(){
@@ -99,7 +99,7 @@ public class ListFunction {
 
 
             bookDao.updateBook(existingBook);
-            o.println("                                                   Book updated successfully :)");
+            o.println("                                                   Book "+ existingBook.getTitre() +" updated successfully :)");
         } else {
             o.println("                                                   Book with isbn" + bookId + "not found :(");
         }
@@ -114,7 +114,7 @@ public class ListFunction {
         o.print("                                                       -> ");
         int bookIsbn = i.readInt();
         bookDao.deleteBook(bookIsbn);
-        o.println("                                                       The book is deleted successfully :)");
+        o.println("                                                       The book with isbn : "+ bookIsbn +" is deleted successfully :)");
     }
     public void allBooksAvailable(){
         o.println("                                                       All books available in library :");
@@ -167,7 +167,8 @@ public class ListFunction {
         o.println("                                                     *******************************");
         o.println("                                                     * Welcome to form Add Member  *");
         o.println("                                                     *******************************");
-        o.print("                                                       Enter number of member : ");
+        o.println("                                                     Enter number of member : ");
+        o.print("                                                       -> ");
         int numMember = i.readInt();
         o.println("                                                     Enter name : ");
         o.print("                                                       -> ");
@@ -178,7 +179,7 @@ public class ListFunction {
 
         Membre membre = new Membre(numMember,name,cin);
         membreDao.saveMember(membre);
-        o.println("                                                     Member added  successfully :)");
+        o.println("                                                     Member "+ membre.getName() +" added  successfully :)");
     }
     public void editMember(){
         o.println("                                                     *********************************");
@@ -211,7 +212,7 @@ public class ListFunction {
                 existingMember.setCin(newCin);
             }
             membreDao.updateMember(existingMember);
-            o.println("                                                 Member updated successfully :)");
+            o.println("                                                 Member "+ existingMember.getName() +" updated successfully :)");
         } else {
             o.println("                                                 Member with isbn" + memberId + "not found :(");
         }
@@ -344,5 +345,65 @@ public class ListFunction {
         bookDao.bookBorrowed();
         o.print("                                                      --------------------------book Lost      : ");
         bookDao.bookLost();
+    }
+    public void booksBorrowedInfByBookId(int bookId){
+        List<BookBorrow> bookBorrow = bookDao.booksBorrowedWithInfo(bookId);
+        if (!bookBorrow.isEmpty()){
+            o.println("                                         List of the book Borrowed by member with information : ");
+            for (BookBorrow bookBorrow1 : bookBorrow) {
+                o.println("                                     /////////////////////////////////////////////////////////////");
+                o.println("                                     Isbn of the book : " + bookBorrow1.getBookId().getIsbn());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Titre of the book : " + bookBorrow1.getBookId().getTitre());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Author of the book : " + bookBorrow1.getBookId().getAuthor());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Status of the book : " + bookBorrow1.getBookId().getStatus());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     MemberId of the Member : " + bookBorrow1.getMemberId().getNumMember());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Name of the member : " + bookBorrow1.getMemberId().getName());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Cin of the member : " + bookBorrow1.getMemberId().getCin());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Date borrowed of the book : " + bookBorrow1.getDateOfBorrow());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Date return of the book : " + bookBorrow1.getDateOfReturn());
+                o.println("                                     /////////////////////////////////////////////////////////////");
+            }
+        }else {
+            o.println("                                         no book with this information.");
+        }
+
+    }
+    public void booksBorrowedInfByMember(int memberId){
+        List<BookBorrow> bookBorrow = membreDao.memberBorrowedBookWithInfo(memberId);
+        if (!bookBorrow.isEmpty()){
+            o.println("                                         List of the Member with book Borrowed details : ");
+            for (BookBorrow bookBorrow1 : bookBorrow) {
+                o.println("                                     /////////////////////////////////////////////////////////////");
+                o.println("                                     MemberId of the Member : " + bookBorrow1.getMemberId().getNumMember());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Name of the member : " + bookBorrow1.getMemberId().getName());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Cin of the member : " + bookBorrow1.getMemberId().getCin());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Isbn of the book : " + bookBorrow1.getBookId().getIsbn());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Titre of the book : " + bookBorrow1.getBookId().getTitre());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Author of the book : " + bookBorrow1.getBookId().getAuthor());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Status of the book : " + bookBorrow1.getBookId().getStatus());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Date borrowed of the book : " + bookBorrow1.getDateOfBorrow());
+                o.println("                                     ----------------------------------------------------------");
+                o.println("                                     Date return of the book : " + bookBorrow1.getDateOfReturn());
+                o.println("                                     /////////////////////////////////////////////////////////////");
+            }
+        }else {
+            o.println("                                         no Member with this information.");
+        }
+
     }
 }

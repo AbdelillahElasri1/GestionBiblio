@@ -27,6 +27,10 @@ public class GestionDeBiblio {
 	public static void main(String[] args) throws ParseException {
 		ChoiceList choiceList = new ChoiceList();
 		choiceList.choiceOfList();
+
+
+
+
 	}
 
 }

@@ -22,6 +22,13 @@ public class BookBorrow {
         this.memberId = memberId;
     }
 
+    public BookBorrow(Date dateOfBorrow, Date dateOfReturn, Book bookId, Membre memberId) {
+        this.dateOfBorrow = dateOfBorrow;
+        this.dateOfReturn = dateOfReturn;
+        this.bookId = bookId;
+        this.memberId = memberId;
+    }
+
     public Date getDateOfBorrow() {
         return dateOfBorrow;
     }

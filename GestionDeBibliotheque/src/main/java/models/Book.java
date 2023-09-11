@@ -7,7 +7,7 @@ public class Book {
     private String titre;
     private String author;
     private Status status;
-    private BookBorrow bookBorrow;
+    private List<BookBorrow> bookBorrow;
 
 
 
@@ -18,11 +18,11 @@ public class Book {
         this.status = status;
     }
 
-    public BookBorrow getBookBorrow() {
+    public List<BookBorrow> getBookBorrow() {
         return bookBorrow;
     }
 
-    public void setBookBorrow(BookBorrow bookBorrow) {
+    public void setBookBorrow(List<BookBorrow> bookBorrow) {
         this.bookBorrow = bookBorrow;
     }
 

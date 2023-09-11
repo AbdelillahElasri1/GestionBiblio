@@ -2,6 +2,8 @@ package Dao;
 
 import Database.DatabaseConnectionManager;
 import models.Book;
+import models.BookBorrow;
+import models.Membre;
 import models.Status;
 
 import java.sql.*;
@@ -9,12 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDao implements BookDaoInterface {
-    DatabaseConnectionManager DB = new DatabaseConnectionManager();
-    Connection connection = DB.getConnection();
+    Connection connection = DatabaseConnectionManager.getConnection();
 
     Status status = Status.AVAILABLE;
     @Override
-    public void saveBook(Book book){
+    public Book saveBook(Book book){
 
 
         try {
@@ -24,26 +25,22 @@ public class BookDao implements BookDaoInterface {
                 preparedStatement.setString(3,book.getAuthor());
                 preparedStatement.setString(4,status.name());
 
-                preparedStatement.executeUpdate();
+                int row = preparedStatement.executeUpdate();
+                if (row > 0){
+                    return book;
+                }
+
 
 
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            // Close the connection in a finally block to ensure it's always closed
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    // Handle any exceptions that may occur during closing the connection
-                    System.err.println("Error closing connection: " + e.getMessage());
-                }
-            }
+
         }
+        return null;
     }
     @Override
-    public void updateBook(Book book){
+    public Book updateBook(Book book){
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE book SET titre = ?, author = ?, status = ? WHERE isbn = ?");
@@ -51,21 +48,32 @@ public class BookDao implements BookDaoInterface {
             preparedStatement.setString(2,book.getAuthor());
             preparedStatement.setString(3, String.valueOf(book.getStatus()));
             preparedStatement.setInt(4,book.getIsbn());
-            preparedStatement.executeUpdate();
+            int row = preparedStatement.executeUpdate();
+            if (row > 0){
+                return book;
+            }
         } catch (SQLException e){
             e.printStackTrace();
         }
-
+        return null;
     }
     @Override
-    public void deleteBook(int bookId){
+    public int deleteBook(int bookId){
         try {
+            PreparedStatement deleteBorrowRecords = connection.prepareStatement("DELETE FROM bookBorrow WHERE bookId = ?");
+            deleteBorrowRecords.setInt(1, bookId);
+            deleteBorrowRecords.executeUpdate();
+
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
             preparedStatement.setInt(1,bookId);
-            preparedStatement.executeUpdate();
+            int row = preparedStatement.executeUpdate();
+            if (row > 0){
+                return bookId;
+            }
         } catch (SQLException e){
             e.printStackTrace();
         }
+        return 0;
     }
     @Override
     public Book getBookByIsbn(int bookId){
@@ -238,5 +246,30 @@ public class BookDao implements BookDaoInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public List<BookBorrow> booksBorrowedWithInfo(int bookId){
+        ArrayList<BookBorrow> bookBorrows = new ArrayList<>();
+        BookDao bookDao = new BookDao();
+        MembreDao membreDao = new MembreDao();
+        Book book = bookDao.getBookByIsbn(bookId);
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT dateOfBorrow,dateOfReturn,memberId FROM bookBorrow WHERE bookId = ?");
+            preparedStatement.setInt(1,bookId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Date dateBorrow = resultSet.getDate("dateOfBorrow");
+                Date dateReturn = resultSet.getDate("dateOfReturn");
+                Membre membre = membreDao.getMemberByNumMember(resultSet.getInt("memberId"));
+//                int member_id = resultSet.getInt("memberId");
+                BookBorrow bookBorrow = new BookBorrow(dateBorrow,dateReturn,book,membre);
+                bookBorrows.add(bookBorrow);
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return bookBorrows;
     }
 }

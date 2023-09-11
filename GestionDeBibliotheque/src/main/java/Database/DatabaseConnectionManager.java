@@ -6,20 +6,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnectionManager {
-    private String url = "jdbc:mysql://localhost:3306/librarymanagement";
-    private String username = "root";
-    private String password = "Abdelillah123@";
-    private  Connection connection;
+    private static String url = "jdbc:mysql://localhost:3306/librarymanagement";
+    private static String username = "root";
+    private static String password = "Abdelillah123@";
+    private static Connection connection;
     private static DataSource dataSource;
 
-    public DatabaseConnectionManager() {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+    private DatabaseConnectionManager() {
+
     }
 
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         if (connection == null){
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");

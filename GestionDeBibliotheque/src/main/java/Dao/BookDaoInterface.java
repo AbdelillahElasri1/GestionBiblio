@@ -1,13 +1,14 @@
 package Dao;
 
 import models.Book;
+import models.BookBorrow;
 
 import java.util.List;
 
 public interface BookDaoInterface {
-     void saveBook(Book book);
-     void updateBook(Book book);
-     void deleteBook(int bookId);
+     Book saveBook(Book book);
+     Book updateBook(Book book);
+     int deleteBook(int bookId);
      Book getBookByIsbn(int bookId);
      List<Book> getAllBooksAvailable();
      List<Book> getAllBooksBorrow();
@@ -17,5 +18,6 @@ public interface BookDaoInterface {
      void bookBorrowed();
      void bookLost();
      void allBooksInLibrary();
+     List<BookBorrow> booksBorrowedWithInfo(int bookId);
 
 }

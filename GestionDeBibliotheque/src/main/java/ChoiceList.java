@@ -1,8 +1,10 @@
+import Dao.BookDao;
 import XCases.ListFunction;
 import models.Status;
 import utils.InputReader;
 import utils.OutputWriter;
 
+import java.awt.datatransfer.SystemFlavorMap;
 import java.text.ParseException;
 
 public class ChoiceList {
@@ -29,6 +31,7 @@ public class ChoiceList {
             o.println("*****                                                  11. take book from library                                                *****");
             o.println("*****                                                  12. return book to library                                                *****");
             o.println("*****                                                  13. Statistics of book                                                    *****");
+            o.println("*****                                                  14. book with all info                                                    *****");
             o.println("*****                                                   0. exit                                                                  *****");
             o.println("**************************************************************************************************************************************");
             o.print("                                                        =>enter your choice: ");
@@ -73,12 +76,37 @@ public class ChoiceList {
                 case 13:
                     listFunction.bookStatistics();
                     break;
+                case 14:
+                    o.println("                                                           Books details : ");
+                    o.println("                                                           using : ");
+                    o.println("                                                                 1- isbn of the book.");
+                    o.println("                                                                 2- number of the member.");
+                    o.print("                                                             -> ");
+                    int readChoice = i.readInt();
+                    switch (readChoice){
+                        case 1:
+                            o.println("                                                    Enter isbn of book you want to show detail : ");
+                            o.print("                                                      -> ");
+                            int isbnBook = i.readInt();
+                            listFunction.booksBorrowedInfByBookId(isbnBook);
+                            break;
+                        case 2:
+                            o.println("                                                    Enter number of the member you want to show detail : ");
+                            o.print("                                                      -> ");
+                            int numberMember = i.readInt();
+                            listFunction.booksBorrowedInfByMember(numberMember);
+                            break;
+                        default:
+                            o.println("                                                    Invalid choice.");
+                            break;
+                    }
+                    break;
                 case 0:
                     o.println("exit");
                     System.exit(1);
                     break;
                 default:
-                    o.println("invalid choice");
+                    o.println("                                                            Invalid choice");
                     break;
             }
 

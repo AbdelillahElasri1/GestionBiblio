@@ -8,8 +8,7 @@ import models.Status;
 import java.sql.*;
 
 public class BookBorrowDao implements BookBorrowDaoInterface{
-    DatabaseConnectionManager DB = new DatabaseConnectionManager();
-    Connection connection = DB.getConnection();
+    Connection connection = DatabaseConnectionManager.getConnection();
     Status status = null;
     String available = String.valueOf(Status.AVAILABLE);
     String borrow = String.valueOf(Status.BORROWED);

@@ -1,10 +1,12 @@
 package models;
 
+import java.util.List;
+
 public class Membre {
     private Integer numMember;
     private String name;
     private String cin;
-    private BookBorrow bookBorrow;
+    private List<BookBorrow> bookBorrow;
 
 
     public Integer getNumMember() {
@@ -22,11 +24,11 @@ public class Membre {
 
     }
 
-    public BookBorrow getBookBorrow() {
+    public List<BookBorrow> getBookBorrow() {
         return bookBorrow;
     }
 
-    public void setBookBorrow(BookBorrow bookBorrow) {
+    public void setBookBorrow(List<BookBorrow> bookBorrow) {
         this.bookBorrow = bookBorrow;
     }
 
