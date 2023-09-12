@@ -114,7 +114,6 @@ public class ListFunction {
         o.print("                                                       -> ");
         int bookIsbn = i.readInt();
         bookDao.deleteBook(bookIsbn);
-        o.println("                                                       The book with isbn : "+ bookIsbn +" is deleted successfully :)");
     }
     public void allBooksAvailable(){
         o.println("                                                       All books available in library :");

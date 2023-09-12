@@ -60,16 +60,23 @@ public class BookDao implements BookDaoInterface {
     @Override
     public int deleteBook(int bookId){
         try {
-            PreparedStatement deleteBorrowRecords = connection.prepareStatement("DELETE FROM bookBorrow WHERE bookId = ?");
-            deleteBorrowRecords.setInt(1, bookId);
-            deleteBorrowRecords.executeUpdate();
+            PreparedStatement checkBorrowed = connection.prepareStatement("SELECT COUNT(*) FROM bookBorrow WHERE bookId = ?");
+            checkBorrowed.setInt(1, bookId);
+            ResultSet resultSet = checkBorrowed.executeQuery();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
-            preparedStatement.setInt(1,bookId);
-            int row = preparedStatement.executeUpdate();
-            if (row > 0){
-                return bookId;
+            if (resultSet.next() && resultSet.getInt(1) > 0) {
+                // The book is borrowed, so don't delete it
+                System.out.println("                                                       =>Book " + bookId + " is borrowed so you can't delete it.");
+            }else {
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
+                preparedStatement.setInt(1,bookId);
+                int row = preparedStatement.executeUpdate();
+                if (row > 0){
+                    return bookId;
+                }
+                System.out.println("                                                       =>Book with "+ bookId +" deleted successfully.");
             }
+
         } catch (SQLException e){
             e.printStackTrace();
         }
