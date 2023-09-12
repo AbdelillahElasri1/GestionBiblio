@@ -68,13 +68,15 @@ public class BookDao implements BookDaoInterface {
                 // The book is borrowed, so don't delete it
                 System.out.println("                                                       =>Book " + bookId + " is borrowed so you can't delete it.");
             }else {
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ?");
+                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM book WHERE isbn = ? AND status!='BORROWED'");
                 preparedStatement.setInt(1,bookId);
                 int row = preparedStatement.executeUpdate();
                 if (row > 0){
-                    return bookId;
+                    System.out.println("                                                       =>Book with "+ bookId +" deleted successfully.");
+                } else {
+                    System.out.println("                                                       =>Book with "+ bookId + " you can't deleted. " );
                 }
-                System.out.println("                                                       =>Book with "+ bookId +" deleted successfully.");
+
             }
 
         } catch (SQLException e){
