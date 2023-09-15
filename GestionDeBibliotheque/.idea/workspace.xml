@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a96f0dd-c14c-46e8-b82b-fe4df3c33124" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionDeBibliotheque.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/ChoiceList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookBorrowDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookBorrowDaoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/BookDaoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Dao/MembreDaoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/Database/DatabaseConnectionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/GestionDeBiblio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/XCases/ListFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/BookBorrow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/Membre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/models/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/utils/InputReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionDeBibliotheque/utils/OutputWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/XCases/ListFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/XCases/ListFunction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,25 +47,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2Ur9SXxL27vB8LiJCGZ63MoIAF6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/elasri/Downloads/mysql-connector-j_8.1.0-1ubuntu23.04_all/data/usr/share/java/mysql-connector-java-8.1.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/elasri/Desktop/GestionBiblio",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GestionDeBiblio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="GestionDeBiblio" />
       <module name="GestionDeBibliotheque" />
       <method v="2">

@@ -119,25 +119,26 @@ public class ListFunction {
         o.println("                                                       All books available in library :");
 
         List<Book> books = bookDao.getAllBooksAvailable();
-        if (!books.isEmpty()){
-            o.println("                                                     *******************************");
-            o.println("                                                     *   List of book available    *");
-            o.println("                                                     *******************************");
-            for (Book book1 : books) {
-                o.println("                                              -----------------------------------");
-                o.println("                                              |Book isbn : " + book1.getIsbn()+"|");
-                o.println("                                              |---------------------------------|");
-                o.println("                                              |Titre : " + book1.getTitre()+"   |");
-                o.println("                                              |---------------------------------|");
-                o.println("                                              |Author : " + book1.getAuthor()+" |");
-                o.println("                                              |---------------------------------|");
-                o.println("                                              |Status : " + book1.getStatus()+" |");
-                o.println("                                              |---------------------------------|");
-            }
 
-        }else {
-            o.println("                                                   No books available inside library :(");
-        }
+//        if (!books.isEmpty()){
+//            o.println("                                                     *******************************");
+//            o.println("                                                     *   List of book available    *");
+//            o.println("                                                     *******************************");
+//            for (Book book1 : books) {
+//                o.println("                                              -----------------------------------");
+//                o.println("                                              |Book isbn : " + book1.getIsbn()+"|");
+//                o.println("                                              |---------------------------------|");
+//                o.println("                                              |Titre : " + book1.getTitre()+"   |");
+//                o.println("                                              |---------------------------------|");
+//                o.println("                                              |Author : " + book1.getAuthor()+" |");
+//                o.println("                                              |---------------------------------|");
+//                o.println("                                              |Status : " + book1.getStatus()+" |");
+//                o.println("                                              |---------------------------------|");
+//            }
+//
+//        }else {
+//            o.println("                                                   No books available inside library :(");
+//        }
     }
     public void allBooksBorrowed(){
         o.println("                                                     *******************************");
